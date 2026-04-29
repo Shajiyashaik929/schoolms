@@ -4,12 +4,12 @@ This is a production-grade Spring Boot application that provides REST APIs to ma
 
 Technology Stack
 
-Java 17
-Spring Boot 3
-Spring Data JPA
-Hibernate
-MySQL
-Maven
+Java 17,
+Spring Boot 3,
+Spring Data JPA,
+Hibernate,
+MySQL,
+Maven,
 Lombok
 
 Prerequisites
