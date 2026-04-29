@@ -1,0 +1,5 @@
+com\codegnan\schoolms\controller\MarkControllerIntegrationTest.class
+com\codegnan\schoolms\controller\StudentControllerIntegrationTest.class
+com\codegnan\schoolms\service\StudentServiceTest.class
+com\codegnan\schoolms\SchoolMsApplicationTests.class
+com\codegnan\schoolms\service\MarkServiceTest.class

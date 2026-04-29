@@ -1,7 +1,6 @@
 package com.codegnan.schoolms.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 @Entity
 @Table(
@@ -13,11 +12,6 @@ import lombok.*;
         )
     }
 )
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 public class Mark {
 
     @Id
@@ -39,4 +33,70 @@ public class Mark {
 
     @Column(name = "score", nullable = false)
     private Integer score;
+
+    // ================= Constructors =================
+
+    public Mark() {
+    }
+
+    public Mark(Integer markId, Student student, Subject subject, Exam exam, Integer score) {
+        this.markId = markId;
+        this.student = student;
+        this.subject = subject;
+        this.exam = exam;
+        this.score = score;
+    }
+
+    // ================= Getters & Setters =================
+
+    public Integer getMarkId() {
+        return markId;
+    }
+
+    public void setMarkId(Integer markId) {
+        this.markId = markId;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    // ================= toString =================
+    // ⚠️ Avoid LAZY fields here to prevent LazyInitializationException
+
+    @Override
+    public String toString() {
+        return "Mark{" +
+                "markId=" + markId +
+                ", score=" + score +
+                '}';
+    }
 }

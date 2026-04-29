@@ -1,0 +1,831 @@
+2026-04-28 15:15:02 [main] INFO  c.c.schoolms.SchoolMsApplication - Starting SchoolMsApplication using Java 17.0.12 with PID 16252 (C:\Users\HP\Desktop\schoolms\target\classes started by HP in C:\Users\HP\Desktop\schoolms)
+2026-04-28 15:15:03 [main] DEBUG c.c.schoolms.SchoolMsApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-04-28 15:15:03 [main] INFO  c.c.schoolms.SchoolMsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:15:10 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-28 15:15:10 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 377 ms. Found 4 JPA repository interfaces.
+2026-04-28 15:15:15 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-28 15:15:15 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 15:15:15 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-04-28 15:15:15 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 15:15:15 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 12165 ms
+2026-04-28 15:15:17 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-28 15:15:18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-28 15:15:18 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-28 15:15:20 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-28 15:15:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - SchoolMSHikariPool - Starting...
+2026-04-28 15:15:22 [main] INFO  com.zaxxer.hikari.pool.HikariPool - SchoolMSHikariPool - Added connection com.mysql.cj.jdbc.ConnectionImpl@51fb5fe6
+2026-04-28 15:15:22 [main] INFO  com.zaxxer.hikari.HikariDataSource - SchoolMSHikariPool - Start completed.
+2026-04-28 15:15:22 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-28 15:15:28 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-28 15:15:28 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-28 15:15:31 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-28 15:15:35 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-28 15:15:40 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2026-04-28 15:15:40 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-04-28 15:15:40 [main] INFO  c.c.schoolms.SchoolMsApplication - Started SchoolMsApplication in 41.375 seconds (process running for 46.128)
+2026-04-28 15:15:42 [RMI TCP Connection(4)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-28 15:15:42 [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-28 15:15:42 [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2026-04-28 15:20:15 [http-nio-8080-exec-3] INFO  c.c.s.controller.StudentController - POST /api/students
+2026-04-28 15:20:15 [http-nio-8080-exec-3] INFO  c.c.s.s.impl.StudentServiceImpl - Creating new student: Rohan Mehta
+2026-04-28 15:20:15 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        students
+        (enrollment_year, first_name, last_name) 
+    values
+        (?, ?, ?)
+2026-04-28 15:20:15 [http-nio-8080-exec-3] INFO  c.c.s.s.impl.StudentServiceImpl - Student created with ID: 2
+2026-04-28 15:20:44 [http-nio-8080-exec-4] INFO  c.c.s.controller.StudentController - POST /api/students
+2026-04-28 15:20:44 [http-nio-8080-exec-4] INFO  c.c.s.s.impl.StudentServiceImpl - Creating new student: siva Raj
+2026-04-28 15:20:44 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        students
+        (enrollment_year, first_name, last_name) 
+    values
+        (?, ?, ?)
+2026-04-28 15:20:44 [http-nio-8080-exec-4] INFO  c.c.s.s.impl.StudentServiceImpl - Student created with ID: 3
+2026-04-28 15:23:04 [http-nio-8080-exec-8] INFO  c.c.s.controller.StudentController - PUT /api/students/1
+2026-04-28 15:23:04 [http-nio-8080-exec-8] INFO  c.c.s.s.impl.StudentServiceImpl - Updating student with ID: 1
+2026-04-28 15:23:04 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:23:04 [http-nio-8080-exec-8] INFO  c.c.s.s.impl.StudentServiceImpl - Student updated: ID=1
+2026-04-28 15:23:04 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    update
+        students 
+    set
+        enrollment_year=?,
+        first_name=?,
+        last_name=? 
+    where
+        student_id=?
+2026-04-28 15:23:26 [http-nio-8080-exec-9] INFO  c.c.s.controller.StudentController - GET /api/students
+2026-04-28 15:23:26 [http-nio-8080-exec-9] DEBUG c.c.s.s.impl.StudentServiceImpl - Fetching all students
+2026-04-28 15:23:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0
+2026-04-28 15:23:42 [http-nio-8080-exec-10] INFO  c.c.s.controller.StudentController - DELETE /api/students/3
+2026-04-28 15:23:42 [http-nio-8080-exec-10] INFO  c.c.s.s.impl.StudentServiceImpl - Attempting to delete student with ID: 3
+2026-04-28 15:23:42 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:23:42 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        count(m1_0.mark_id) 
+    from
+        marks m1_0 
+    left join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    where
+        s1_0.student_id=?
+2026-04-28 15:23:43 [http-nio-8080-exec-10] INFO  c.c.s.s.impl.StudentServiceImpl - Student with ID 3 deleted successfully.
+2026-04-28 15:23:43 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        students 
+    where
+        student_id=?
+2026-04-28 15:26:59 [http-nio-8080-exec-1] WARN  c.c.s.e.GlobalExceptionHandler - Validation failed on /api/subjects: Subject name is required and must not be blank.
+2026-04-28 15:27:23 [http-nio-8080-exec-3] WARN  c.c.s.e.GlobalExceptionHandler - Validation failed on /api/subjects: Subject name is required and must not be blank.
+2026-04-28 15:28:52 [http-nio-8080-exec-5] INFO  c.c.s.controller.SubjectController - POST /api/subjects
+2026-04-28 15:28:52 [http-nio-8080-exec-5] INFO  c.c.s.s.impl.SubjectServiceImpl - Creating new subject: English Literature
+2026-04-28 15:28:52 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        subjects
+        (subject_name) 
+    values
+        (?)
+2026-04-28 15:28:52 [http-nio-8080-exec-5] INFO  c.c.s.s.impl.SubjectServiceImpl - Subject created with ID: 1
+2026-04-28 15:29:12 [http-nio-8080-exec-8] INFO  c.c.s.controller.SubjectController - POST /api/subjects
+2026-04-28 15:29:12 [http-nio-8080-exec-8] INFO  c.c.s.s.impl.SubjectServiceImpl - Creating new subject: Maths Lecturer
+2026-04-28 15:29:12 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        subjects
+        (subject_name) 
+    values
+        (?)
+2026-04-28 15:29:12 [http-nio-8080-exec-8] INFO  c.c.s.s.impl.SubjectServiceImpl - Subject created with ID: 2
+2026-04-28 15:29:25 [http-nio-8080-exec-9] INFO  c.c.s.controller.SubjectController - POST /api/subjects
+2026-04-28 15:29:25 [http-nio-8080-exec-9] INFO  c.c.s.s.impl.SubjectServiceImpl - Creating new subject: Science Lecturer
+2026-04-28 15:29:25 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        subjects
+        (subject_name) 
+    values
+        (?)
+2026-04-28 15:29:25 [http-nio-8080-exec-9] INFO  c.c.s.s.impl.SubjectServiceImpl - Subject created with ID: 3
+2026-04-28 15:29:54 [http-nio-8080-exec-10] INFO  c.c.s.controller.SubjectController - GET /api/subjects/2
+2026-04-28 15:29:54 [http-nio-8080-exec-10] DEBUG c.c.s.s.impl.SubjectServiceImpl - Fetching subject with ID: 2
+2026-04-28 15:29:54 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:30:05 [http-nio-8080-exec-6] INFO  c.c.s.controller.SubjectController - GET /api/subjects
+2026-04-28 15:30:05 [http-nio-8080-exec-6] DEBUG c.c.s.s.impl.SubjectServiceImpl - Fetching all subjects
+2026-04-28 15:30:05 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0
+2026-04-28 15:30:40 [http-nio-8080-exec-7] INFO  c.c.s.controller.SubjectController - PUT /api/subjects/1
+2026-04-28 15:30:40 [http-nio-8080-exec-7] INFO  c.c.s.s.impl.SubjectServiceImpl - Updating subject with ID: 1
+2026-04-28 15:30:40 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:30:40 [http-nio-8080-exec-7] INFO  c.c.s.s.impl.SubjectServiceImpl - Subject updated: ID=1
+2026-04-28 15:30:40 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    update
+        subjects 
+    set
+        subject_name=? 
+    where
+        subject_id=?
+2026-04-28 15:31:01 [http-nio-8080-exec-1] INFO  c.c.s.controller.SubjectController - DELETE /api/subjects/1
+2026-04-28 15:31:01 [http-nio-8080-exec-1] INFO  c.c.s.s.impl.SubjectServiceImpl - Attempting to delete subject with ID: 1
+2026-04-28 15:31:01 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:31:01 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(m1_0.mark_id) 
+    from
+        marks m1_0 
+    left join
+        subjects s1_0 
+            on s1_0.subject_id=m1_0.subject_id 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:31:01 [http-nio-8080-exec-1] INFO  c.c.s.s.impl.SubjectServiceImpl - Subject with ID 1 deleted successfully.
+2026-04-28 15:31:01 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        subjects 
+    where
+        subject_id=?
+2026-04-28 15:32:06 [http-nio-8080-exec-2] INFO  c.c.s.controller.ExamController - POST /api/exams
+2026-04-28 15:32:06 [http-nio-8080-exec-2] INFO  c.c.s.service.impl.ExamServiceImpl - Creating new exam: Unit Test 1 - 2025 on 2025-07-10
+2026-04-28 15:32:06 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        exams
+        (exam_date, exam_name) 
+    values
+        (?, ?)
+2026-04-28 15:32:06 [http-nio-8080-exec-2] INFO  c.c.s.service.impl.ExamServiceImpl - Exam created with ID: 1
+2026-04-28 15:32:59 [http-nio-8080-exec-5] INFO  c.c.s.controller.ExamController - POST /api/exams
+2026-04-28 15:32:59 [http-nio-8080-exec-5] INFO  c.c.s.service.impl.ExamServiceImpl - Creating new exam: Unit Test 2 - 2025 on 2025-08-10
+2026-04-28 15:32:59 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        exams
+        (exam_date, exam_name) 
+    values
+        (?, ?)
+2026-04-28 15:32:59 [http-nio-8080-exec-5] INFO  c.c.s.service.impl.ExamServiceImpl - Exam created with ID: 2
+2026-04-28 15:33:13 [http-nio-8080-exec-8] INFO  c.c.s.controller.ExamController - POST /api/exams
+2026-04-28 15:33:13 [http-nio-8080-exec-8] INFO  c.c.s.service.impl.ExamServiceImpl - Creating new exam: Unit Test 3 - 2025 on 2025-09-10
+2026-04-28 15:33:13 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        exams
+        (exam_date, exam_name) 
+    values
+        (?, ?)
+2026-04-28 15:33:13 [http-nio-8080-exec-8] INFO  c.c.s.service.impl.ExamServiceImpl - Exam created with ID: 3
+2026-04-28 15:33:29 [http-nio-8080-exec-9] INFO  c.c.s.controller.ExamController - GET /api/exams/1
+2026-04-28 15:33:29 [http-nio-8080-exec-9] DEBUG c.c.s.service.impl.ExamServiceImpl - Fetching exam with ID: 1
+2026-04-28 15:33:29 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:34:07 [http-nio-8080-exec-10] INFO  c.c.s.controller.ExamController - PUT /api/exams/2
+2026-04-28 15:34:07 [http-nio-8080-exec-10] INFO  c.c.s.service.impl.ExamServiceImpl - Updating exam with ID: 2
+2026-04-28 15:34:07 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:34:07 [http-nio-8080-exec-10] INFO  c.c.s.service.impl.ExamServiceImpl - Exam updated: ID=2
+2026-04-28 15:34:07 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    update
+        exams 
+    set
+        exam_date=?,
+        exam_name=? 
+    where
+        exam_id=?
+2026-04-28 15:34:23 [http-nio-8080-exec-6] INFO  c.c.s.controller.ExamController - DELETE /api/exams/3
+2026-04-28 15:34:23 [http-nio-8080-exec-6] INFO  c.c.s.service.impl.ExamServiceImpl - Attempting to delete exam with ID: 3
+2026-04-28 15:34:23 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:34:23 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(m1_0.mark_id) 
+    from
+        marks m1_0 
+    left join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:34:23 [http-nio-8080-exec-6] INFO  c.c.s.service.impl.ExamServiceImpl - Exam with ID 3 deleted successfully.
+2026-04-28 15:34:23 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        exams 
+    where
+        exam_id=?
+2026-04-28 15:43:23 [main] INFO  c.c.schoolms.SchoolMsApplication - Starting SchoolMsApplication using Java 17.0.12 with PID 11436 (C:\Users\HP\Desktop\schoolms\target\classes started by HP in C:\Users\HP\Desktop\schoolms)
+2026-04-28 15:43:23 [main] DEBUG c.c.schoolms.SchoolMsApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-04-28 15:43:23 [main] INFO  c.c.schoolms.SchoolMsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:43:29 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-28 15:43:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 505 ms. Found 4 JPA repository interfaces.
+2026-04-28 15:43:34 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-28 15:43:35 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 15:43:35 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-04-28 15:43:35 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 15:43:35 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 12089 ms
+2026-04-28 15:43:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-28 15:43:37 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-28 15:43:38 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-28 15:43:39 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-28 15:43:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - SchoolMSHikariPool - Starting...
+2026-04-28 15:43:41 [main] INFO  com.zaxxer.hikari.pool.HikariPool - SchoolMSHikariPool - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ad3969
+2026-04-28 15:43:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - SchoolMSHikariPool - Start completed.
+2026-04-28 15:43:41 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-28 15:43:48 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-28 15:43:48 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-28 15:43:51 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-28 15:43:56 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-28 15:44:03 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2026-04-28 15:44:03 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-04-28 15:44:03 [main] INFO  c.c.schoolms.SchoolMsApplication - Started SchoolMsApplication in 43.282 seconds (process running for 47.504)
+2026-04-28 15:44:05 [RMI TCP Connection(4)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-28 15:44:05 [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-28 15:44:05 [RMI TCP Connection(4)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2026-04-28 15:48:24 [http-nio-8080-exec-2] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:48:24 [http-nio-8080-exec-2] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=4, subjectId=102, examId=1, score=78
+2026-04-28 15:48:24 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:48:24 [http-nio-8080-exec-2] WARN  c.c.s.e.GlobalExceptionHandler - Resource not found: [STUDENT_NOT_FOUND] Student with ID 4 does not exist. - Path: /api/marks
+2026-04-28 15:48:43 [http-nio-8080-exec-3] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:48:43 [http-nio-8080-exec-3] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=2, subjectId=102, examId=1, score=78
+2026-04-28 15:48:43 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:48:43 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:48:43 [http-nio-8080-exec-3] WARN  c.c.s.e.GlobalExceptionHandler - Resource not found: [SUBJECT_NOT_FOUND] Subject with ID 102 does not exist. - Path: /api/marks
+2026-04-28 15:49:03 [http-nio-8080-exec-5] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:49:03 [http-nio-8080-exec-5] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=2, subjectId=2, examId=1, score=78
+2026-04-28 15:49:03 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:49:03 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:49:03 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:49:03 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.mark_id 
+    from
+        marks m1_0 
+    left join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    left join
+        subjects s2_0 
+            on s2_0.subject_id=m1_0.subject_id 
+    left join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        s1_0.student_id=? 
+        and s2_0.subject_id=? 
+        and e1_0.exam_id=? 
+    limit
+        ?
+2026-04-28 15:49:03 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        marks
+        (exam_id, score, student_id, subject_id) 
+    values
+        (?, ?, ?, ?)
+2026-04-28 15:49:03 [http-nio-8080-exec-5] INFO  c.c.s.service.impl.MarkServiceImpl - Mark recorded with ID: 1
+2026-04-28 15:54:59 [http-nio-8080-exec-4] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:54:59 [http-nio-8080-exec-4] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=1, subjectId=1, examId=1, score=78
+2026-04-28 15:54:59 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:54:59 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:54:59 [http-nio-8080-exec-4] WARN  c.c.s.e.GlobalExceptionHandler - Resource not found: [SUBJECT_NOT_FOUND] Subject with ID 1 does not exist. - Path: /api/marks
+2026-04-28 15:55:21 [http-nio-8080-exec-8] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:55:21 [http-nio-8080-exec-8] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=1, subjectId=2, examId=1, score=78
+2026-04-28 15:55:21 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:55:21 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:55:21 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:55:21 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.mark_id 
+    from
+        marks m1_0 
+    left join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    left join
+        subjects s2_0 
+            on s2_0.subject_id=m1_0.subject_id 
+    left join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        s1_0.student_id=? 
+        and s2_0.subject_id=? 
+        and e1_0.exam_id=? 
+    limit
+        ?
+2026-04-28 15:55:21 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        marks
+        (exam_id, score, student_id, subject_id) 
+    values
+        (?, ?, ?, ?)
+2026-04-28 15:55:21 [http-nio-8080-exec-8] INFO  c.c.s.service.impl.MarkServiceImpl - Mark recorded with ID: 2
+2026-04-28 15:55:50 [http-nio-8080-exec-9] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:55:50 [http-nio-8080-exec-9] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=1, subjectId=3, examId=1, score=78
+2026-04-28 15:55:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:55:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:55:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:55:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.mark_id 
+    from
+        marks m1_0 
+    left join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    left join
+        subjects s2_0 
+            on s2_0.subject_id=m1_0.subject_id 
+    left join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        s1_0.student_id=? 
+        and s2_0.subject_id=? 
+        and e1_0.exam_id=? 
+    limit
+        ?
+2026-04-28 15:55:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        marks
+        (exam_id, score, student_id, subject_id) 
+    values
+        (?, ?, ?, ?)
+2026-04-28 15:55:50 [http-nio-8080-exec-9] INFO  c.c.s.service.impl.MarkServiceImpl - Mark recorded with ID: 3
+2026-04-28 15:56:13 [http-nio-8080-exec-10] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:56:13 [http-nio-8080-exec-10] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=2, subjectId=2, examId=1, score=78
+2026-04-28 15:56:13 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:56:13 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:56:13 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:56:13 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.mark_id 
+    from
+        marks m1_0 
+    left join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    left join
+        subjects s2_0 
+            on s2_0.subject_id=m1_0.subject_id 
+    left join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        s1_0.student_id=? 
+        and s2_0.subject_id=? 
+        and e1_0.exam_id=? 
+    limit
+        ?
+2026-04-28 15:56:13 [http-nio-8080-exec-10] WARN  c.c.s.e.GlobalExceptionHandler - Duplicate mark: A mark already exists for Student 2, Subject 2, Exam 1 - Path: /api/marks
+2026-04-28 15:56:26 [http-nio-8080-exec-1] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:56:26 [http-nio-8080-exec-1] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=2, subjectId=3, examId=1, score=78
+2026-04-28 15:56:26 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:56:26 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:56:26 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:56:26 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.mark_id 
+    from
+        marks m1_0 
+    left join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    left join
+        subjects s2_0 
+            on s2_0.subject_id=m1_0.subject_id 
+    left join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        s1_0.student_id=? 
+        and s2_0.subject_id=? 
+        and e1_0.exam_id=? 
+    limit
+        ?
+2026-04-28 15:56:26 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        marks
+        (exam_id, score, student_id, subject_id) 
+    values
+        (?, ?, ?, ?)
+2026-04-28 15:56:26 [http-nio-8080-exec-1] INFO  c.c.s.service.impl.MarkServiceImpl - Mark recorded with ID: 4
+2026-04-28 15:56:42 [http-nio-8080-exec-2] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:56:42 [http-nio-8080-exec-2] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=2, subjectId=3, examId=2, score=78
+2026-04-28 15:56:42 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:56:42 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:56:42 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:56:42 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.mark_id 
+    from
+        marks m1_0 
+    left join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    left join
+        subjects s2_0 
+            on s2_0.subject_id=m1_0.subject_id 
+    left join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        s1_0.student_id=? 
+        and s2_0.subject_id=? 
+        and e1_0.exam_id=? 
+    limit
+        ?
+2026-04-28 15:56:42 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        marks
+        (exam_id, score, student_id, subject_id) 
+    values
+        (?, ?, ?, ?)
+2026-04-28 15:56:42 [http-nio-8080-exec-2] INFO  c.c.s.service.impl.MarkServiceImpl - Mark recorded with ID: 5
+2026-04-28 15:56:52 [http-nio-8080-exec-3] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:56:52 [http-nio-8080-exec-3] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=2, subjectId=3, examId=3, score=78
+2026-04-28 15:56:52 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:56:52 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:56:52 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:56:52 [http-nio-8080-exec-3] WARN  c.c.s.e.GlobalExceptionHandler - Resource not found: [EXAM_NOT_FOUND] Exam with ID 3 does not exist. - Path: /api/marks
+2026-04-28 15:58:16 [http-nio-8080-exec-7] INFO  c.c.s.controller.MarkController - POST /api/marks
+2026-04-28 15:58:16 [http-nio-8080-exec-7] INFO  c.c.s.service.impl.MarkServiceImpl - Recording new mark: studentId=2, subjectId=3, examId=2, score=78
+2026-04-28 15:58:16 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name 
+    from
+        students s1_0 
+    where
+        s1_0.student_id=?
+2026-04-28 15:58:16 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.subject_id,
+        s1_0.subject_name 
+    from
+        subjects s1_0 
+    where
+        s1_0.subject_id=?
+2026-04-28 15:58:16 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name 
+    from
+        exams e1_0 
+    where
+        e1_0.exam_id=?
+2026-04-28 15:58:16 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.mark_id 
+    from
+        marks m1_0 
+    left join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    left join
+        subjects s2_0 
+            on s2_0.subject_id=m1_0.subject_id 
+    left join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        s1_0.student_id=? 
+        and s2_0.subject_id=? 
+        and e1_0.exam_id=? 
+    limit
+        ?
+2026-04-28 15:58:16 [http-nio-8080-exec-7] WARN  c.c.s.e.GlobalExceptionHandler - Duplicate mark: A mark already exists for Student 2, Subject 3, Exam 2 - Path: /api/marks
+2026-04-28 15:59:31 [http-nio-8080-exec-9] INFO  c.c.s.controller.MarkController - DELETE /api/marks/1
+2026-04-28 15:59:31 [http-nio-8080-exec-9] INFO  c.c.s.service.impl.MarkServiceImpl - Deleting mark with ID: 1
+2026-04-28 15:59:31 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        m1_0.mark_id,
+        m1_0.exam_id,
+        e1_0.exam_id,
+        e1_0.exam_date,
+        e1_0.exam_name,
+        m1_0.score,
+        m1_0.student_id,
+        s1_0.student_id,
+        s1_0.enrollment_year,
+        s1_0.first_name,
+        s1_0.last_name,
+        m1_0.subject_id,
+        s2_0.subject_id,
+        s2_0.subject_name 
+    from
+        marks m1_0 
+    join
+        students s1_0 
+            on s1_0.student_id=m1_0.student_id 
+    join
+        subjects s2_0 
+            on s2_0.subject_id=m1_0.subject_id 
+    join
+        exams e1_0 
+            on e1_0.exam_id=m1_0.exam_id 
+    where
+        m1_0.mark_id=?
+2026-04-28 15:59:31 [http-nio-8080-exec-9] INFO  c.c.s.service.impl.MarkServiceImpl - Mark deleted successfully: ID=1
+2026-04-28 15:59:31 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        marks 
+    where
+        mark_id=?
+2026-04-28 17:22:35 [SchoolMSHikariPool housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - SchoolMSHikariPool - Thread starvation or clock leap detected (housekeeper delta=1h13m24s41ms647µs900ns).
+2026-04-28 17:34:33 [SchoolMSHikariPool housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - SchoolMSHikariPool - Thread starvation or clock leap detected (housekeeper delta=11m58s27ms285µs800ns).

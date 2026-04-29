@@ -5,21 +5,26 @@ import com.codegnan.schoolms.dto.response.ApiResponse;
 import com.codegnan.schoolms.dto.response.SubjectResponse;
 import com.codegnan.schoolms.service.SubjectService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
 @RestController
 @RequestMapping("/api/subjects")
-@RequiredArgsConstructor
 public class SubjectController {
 
+    private static final Logger log = LoggerFactory.getLogger(SubjectController.class);
+
     private final SubjectService subjectService;
+
+    // Constructor Injection (replacing @RequiredArgsConstructor)
+    public SubjectController(SubjectService subjectService) {
+        this.subjectService = subjectService;
+    }
 
     /**
      * 2.1 GET /api/subjects
@@ -27,7 +32,9 @@ public class SubjectController {
      */
     @GetMapping
     public ResponseEntity<ApiResponse<List<SubjectResponse>>> getAllSubjects() {
+
         log.info("GET /api/subjects");
+
         List<SubjectResponse> subjects = subjectService.getAllSubjects();
         return ResponseEntity.ok(ApiResponse.success(subjects, subjects.size()));
     }
@@ -39,8 +46,11 @@ public class SubjectController {
     @GetMapping("/{subjectId}")
     public ResponseEntity<ApiResponse<SubjectResponse>> getSubjectById(
             @PathVariable Integer subjectId) {
+
         log.info("GET /api/subjects/{}", subjectId);
-        return ResponseEntity.ok(ApiResponse.success(subjectService.getSubjectById(subjectId)));
+
+        return ResponseEntity.ok(
+                ApiResponse.success(subjectService.getSubjectById(subjectId)));
     }
 
     /**
@@ -50,8 +60,11 @@ public class SubjectController {
     @PostMapping
     public ResponseEntity<ApiResponse<SubjectResponse>> createSubject(
             @Valid @RequestBody SubjectRequest request) {
+
         log.info("POST /api/subjects");
+
         SubjectResponse created = subjectService.createSubject(request);
+
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(ApiResponse.success("Subject created successfully.", created));
@@ -65,9 +78,13 @@ public class SubjectController {
     public ResponseEntity<ApiResponse<SubjectResponse>> updateSubject(
             @PathVariable Integer subjectId,
             @Valid @RequestBody SubjectRequest request) {
+
         log.info("PUT /api/subjects/{}", subjectId);
+
         SubjectResponse updated = subjectService.updateSubject(subjectId, request);
-        return ResponseEntity.ok(ApiResponse.success("Subject updated successfully.", updated));
+
+        return ResponseEntity.ok(
+                ApiResponse.success("Subject updated successfully.", updated));
     }
 
     /**
@@ -77,8 +94,11 @@ public class SubjectController {
     @DeleteMapping("/{subjectId}")
     public ResponseEntity<ApiResponse<Void>> deleteSubject(
             @PathVariable Integer subjectId) {
+
         log.info("DELETE /api/subjects/{}", subjectId);
+
         subjectService.deleteSubject(subjectId);
+
         return ResponseEntity.ok(
                 ApiResponse.success("Subject with ID " + subjectId + " has been deleted successfully."));
     }

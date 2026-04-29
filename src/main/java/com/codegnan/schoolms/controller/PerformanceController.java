@@ -3,20 +3,25 @@ package com.codegnan.schoolms.controller;
 import com.codegnan.schoolms.dto.response.ApiResponse;
 import com.codegnan.schoolms.dto.response.analytics.*;
 import com.codegnan.schoolms.service.PerformanceService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
 @RestController
 @RequestMapping("/api/performance")
-@RequiredArgsConstructor
 public class PerformanceController {
 
+    private static final Logger log = LoggerFactory.getLogger(PerformanceController.class);
+
     private final PerformanceService performanceService;
+
+    // Constructor Injection (replacing @RequiredArgsConstructor)
+    public PerformanceController(PerformanceService performanceService) {
+        this.performanceService = performanceService;
+    }
 
     /**
      * 5.1 GET /api/performance/students/{studentId}
@@ -25,8 +30,12 @@ public class PerformanceController {
     @GetMapping("/students/{studentId}")
     public ResponseEntity<ApiResponse<StudentFullPerformanceResponse>> getFullPerformanceReport(
             @PathVariable Integer studentId) {
+
         log.info("GET /api/performance/students/{}", studentId);
-        StudentFullPerformanceResponse report = performanceService.getFullPerformanceReport(studentId);
+
+        StudentFullPerformanceResponse report =
+                performanceService.getFullPerformanceReport(studentId);
+
         return ResponseEntity.ok(ApiResponse.success(report));
     }
 
@@ -38,8 +47,12 @@ public class PerformanceController {
     public ResponseEntity<ApiResponse<StudentExamScoresResponse>> getStudentPerformanceInExam(
             @PathVariable Integer studentId,
             @PathVariable Integer examId) {
+
         log.info("GET /api/performance/students/{}/exams/{}", studentId, examId);
-        StudentExamScoresResponse result = performanceService.getStudentPerformanceInExam(studentId, examId);
+
+        StudentExamScoresResponse result =
+                performanceService.getStudentPerformanceInExam(studentId, examId);
+
         return ResponseEntity.ok(ApiResponse.success(result));
     }
 
@@ -49,8 +62,12 @@ public class PerformanceController {
      */
     @GetMapping("/subjects/averages")
     public ResponseEntity<ApiResponse<List<SubjectAverageResponse>>> getSubjectAverages() {
+
         log.info("GET /api/performance/subjects/averages");
-        List<SubjectAverageResponse> averages = performanceService.getSubjectAverages();
+
+        List<SubjectAverageResponse> averages =
+                performanceService.getSubjectAverages();
+
         return ResponseEntity.ok(ApiResponse.success(averages, averages.size()));
     }
 
@@ -65,8 +82,12 @@ public class PerformanceController {
     public ResponseEntity<ApiResponse<List<TopPerformerResponse>>> getTopPerformers(
             @RequestParam(required = false) Integer limit,
             @RequestParam(required = false) Integer examId) {
+
         log.info("GET /api/performance/top-performers — limit={}, examId={}", limit, examId);
-        List<TopPerformerResponse> topPerformers = performanceService.getTopPerformers(limit, examId);
+
+        List<TopPerformerResponse> topPerformers =
+                performanceService.getTopPerformers(limit, examId);
+
         return ResponseEntity.ok(ApiResponse.success(topPerformers, topPerformers.size()));
     }
 
@@ -80,8 +101,12 @@ public class PerformanceController {
     public ResponseEntity<ApiResponse<PassFailReportResponse>> getPassFailReport(
             @PathVariable Integer examId,
             @RequestParam(required = false) Integer passThreshold) {
+
         log.info("GET /api/performance/exams/{}/pass-fail — passThreshold={}", examId, passThreshold);
-        PassFailReportResponse report = performanceService.getPassFailReport(examId, passThreshold);
+
+        PassFailReportResponse report =
+                performanceService.getPassFailReport(examId, passThreshold);
+
         return ResponseEntity.ok(ApiResponse.success(report));
     }
 }

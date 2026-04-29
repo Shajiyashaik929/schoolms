@@ -3,20 +3,25 @@ package com.codegnan.schoolms.controller;
 import com.codegnan.schoolms.dto.response.ApiResponse;
 import com.codegnan.schoolms.dto.response.analytics.*;
 import com.codegnan.schoolms.service.ReportService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
 @RestController
 @RequestMapping("/api/reports")
-@RequiredArgsConstructor
 public class ReportController {
 
+    private static final Logger log = LoggerFactory.getLogger(ReportController.class);
+
     private final ReportService reportService;
+
+    // Constructor Injection (replacing @RequiredArgsConstructor)
+    public ReportController(ReportService reportService) {
+        this.reportService = reportService;
+    }
 
     /**
      * 6.1 GET /api/reports/exams/{examId}/leaderboard
@@ -25,8 +30,12 @@ public class ReportController {
     @GetMapping("/exams/{examId}/leaderboard")
     public ResponseEntity<ApiResponse<ExamLeaderboardResponse>> getExamLeaderboard(
             @PathVariable Integer examId) {
+
         log.info("GET /api/reports/exams/{}/leaderboard", examId);
-        ExamLeaderboardResponse leaderboard = reportService.getExamLeaderboard(examId);
+
+        ExamLeaderboardResponse leaderboard =
+                reportService.getExamLeaderboard(examId);
+
         return ResponseEntity.ok(ApiResponse.success(leaderboard));
     }
 
@@ -39,8 +48,12 @@ public class ReportController {
     @GetMapping("/exams/summary")
     public ResponseEntity<ApiResponse<List<ExamSummaryResponse>>> getExamSummary(
             @RequestParam(required = false) Integer minTotalScore) {
+
         log.info("GET /api/reports/exams/summary — minTotalScore={}", minTotalScore);
-        List<ExamSummaryResponse> summary = reportService.getExamSummary(minTotalScore);
+
+        List<ExamSummaryResponse> summary =
+                reportService.getExamSummary(minTotalScore);
+
         return ResponseEntity.ok(ApiResponse.success(summary, summary.size()));
     }
 
@@ -58,9 +71,13 @@ public class ReportController {
             @RequestParam Integer studentIdA,
             @RequestParam Integer studentIdB,
             @RequestParam(required = false) Integer examId) {
+
         log.info("GET /api/reports/students/compare — studentIdA={}, studentIdB={}, examId={}",
                 studentIdA, studentIdB, examId);
-        StudentCompareResponse comparison = reportService.compareStudents(studentIdA, studentIdB, examId);
+
+        StudentCompareResponse comparison =
+                reportService.compareStudents(studentIdA, studentIdB, examId);
+
         return ResponseEntity.ok(ApiResponse.success(comparison));
     }
 
@@ -74,8 +91,12 @@ public class ReportController {
     public ResponseEntity<ApiResponse<StudentTrendResponse>> getStudentTrend(
             @PathVariable Integer studentId,
             @RequestParam(required = false) Integer subjectId) {
+
         log.info("GET /api/reports/students/{}/trend — subjectId={}", studentId, subjectId);
-        StudentTrendResponse trend = reportService.getStudentTrend(studentId, subjectId);
+
+        StudentTrendResponse trend =
+                reportService.getStudentTrend(studentId, subjectId);
+
         return ResponseEntity.ok(ApiResponse.success(trend));
     }
 }

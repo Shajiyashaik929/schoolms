@@ -3,13 +3,7 @@ package com.codegnan.schoolms.dto.request;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@NoArgsConstructor
 public class MarkRequest {
 
     @NotNull(message = "Student ID is required.")
@@ -25,4 +19,42 @@ public class MarkRequest {
     @Min(value = 0, message = "Score must be at least 0.")
     @Max(value = 100, message = "Score must not exceed 100.")
     private Integer score;
+
+    // No-args constructor
+    public MarkRequest() {
+    }
+
+    // Getters and Setters
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public Integer getExamId() {
+        return examId;
+    }
+
+    public void setExamId(Integer examId) {
+        this.examId = examId;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
 }

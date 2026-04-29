@@ -8,49 +8,63 @@ import com.codegnan.schoolms.repository.MarkRepository;
 import com.codegnan.schoolms.service.ExamService;
 import com.codegnan.schoolms.service.ReportService;
 import com.codegnan.schoolms.service.StudentService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Slf4j
 @Service
-@RequiredArgsConstructor
 public class ReportServiceImpl implements ReportService {
+
+    private static final Logger log = LoggerFactory.getLogger(ReportServiceImpl.class);
 
     private final MarkRepository markRepository;
     private final StudentService studentService;
     private final ExamService examService;
 
+    // ================= Constructor Injection =================
+
+    public ReportServiceImpl(MarkRepository markRepository,
+                             StudentService studentService,
+                             ExamService examService) {
+        this.markRepository = markRepository;
+        this.studentService = studentService;
+        this.examService = examService;
+    }
+
     // ------------------------------------------------------------------
-    // 6.1  GET /api/reports/exams/{examId}/leaderboard
+    // 6.1 Leaderboard
     // ------------------------------------------------------------------
 
     @Override
     @Transactional(readOnly = true)
     public ExamLeaderboardResponse getExamLeaderboard(Integer examId) {
         log.debug("Building leaderboard for exam ID: {}", examId);
-        Exam exam = examService.findExamOrThrow(examId);
 
+        Exam exam = examService.findExamOrThrow(examId);
         List<Object[]> rows = markRepository.findLeaderboardByExamId(examId);
 
         List<ExamLeaderboardResponse.LeaderboardEntry> leaderboard = new ArrayList<>();
+
         for (int i = 0; i < rows.size(); i++) {
             Object[] row = rows.get(i);
-            Integer studentId         = (Integer) row[0];
-            String  firstName         = (String)  row[1];
-            String  lastName          = (String)  row[2];
-            Long    totalScore        = ((Number)  row[3]).longValue();
-            Long    subjectsAttempted = ((Number)  row[4]).longValue();
+
+            Integer studentId = (Integer) row[0];
+            String firstName  = (String) row[1];
+            String lastName   = (String) row[2];
+            Long totalScore   = ((Number) row[3]).longValue();
+            Long subjects     = ((Number) row[4]).longValue();
 
             leaderboard.add(new ExamLeaderboardResponse.LeaderboardEntry(
                     i + 1,
                     new ExamLeaderboardResponse.StudentRef(studentId, firstName + " " + lastName),
                     totalScore,
-                    subjectsAttempted
+                    subjects
             ));
         }
 
@@ -61,35 +75,38 @@ public class ReportServiceImpl implements ReportService {
     }
 
     // ------------------------------------------------------------------
-    // 6.2  GET /api/reports/exams/summary
+    // 6.2 Exam Summary
     // ------------------------------------------------------------------
 
     @Override
     @Transactional(readOnly = true)
     public List<ExamSummaryResponse> getExamSummary(Integer minTotalScore) {
+
         int threshold = (minTotalScore != null && minTotalScore >= 0) ? minTotalScore : 0;
         log.debug("Building exam summary with minTotalScore={}", threshold);
 
         List<Object[]> rows = markRepository.findExamSummary(threshold);
 
-        return rows.stream().map(row -> new ExamSummaryResponse(
-                (Integer) row[0],             // examId
-                (String)  row[1],             // examName
-                row[2].toString(),            // examDate (LocalDate → String)
-                ((Number) row[3]).longValue(), // totalScoreSum
-                ((Number) row[4]).longValue()  // studentsAppeared
-        )).collect(Collectors.toList());
+        return rows.stream()
+                .map(row -> new ExamSummaryResponse(
+                        (Integer) row[0],
+                        (String) row[1],
+                        row[2].toString(),
+                        ((Number) row[3]).longValue(),
+                        ((Number) row[4]).longValue()
+                ))
+                .collect(Collectors.toList());
     }
 
     // ------------------------------------------------------------------
-    // 6.3  GET /api/reports/students/compare
+    // 6.3 Compare Students
     // ------------------------------------------------------------------
 
     @Override
     @Transactional(readOnly = true)
-    public StudentCompareResponse compareStudents(Integer studentIdA, Integer studentIdB,
-                                                  Integer examId) {
-        log.debug("Comparing student ID={} vs ID={}, examId={}", studentIdA, studentIdB, examId);
+    public StudentCompareResponse compareStudents(Integer studentIdA, Integer studentIdB, Integer examId) {
+
+        log.debug("Comparing students {} and {}", studentIdA, studentIdB);
 
         Student studentA = studentService.findStudentOrThrow(studentIdA);
         Student studentB = studentService.findStudentOrThrow(studentIdB);
@@ -97,47 +114,53 @@ public class ReportServiceImpl implements ReportService {
         StudentCompareResponse.StudentDetail detailA = buildStudentDetail(studentA, examId);
         StudentCompareResponse.StudentDetail detailB = buildStudentDetail(studentB, examId);
 
-        StudentCompareResponse.Winner winner = determineWinner(
-                studentA, studentB, detailA.getOverallAverage(), detailB.getOverallAverage());
+        StudentCompareResponse.Winner winner =
+                determineWinner(studentA, studentB,
+                        detailA.getOverallAverage(),
+                        detailB.getOverallAverage());
 
         return new StudentCompareResponse(detailA, detailB, winner);
     }
 
     // ------------------------------------------------------------------
-    // 6.4  GET /api/reports/students/{studentId}/trend
+    // 6.4 Student Trend
     // ------------------------------------------------------------------
 
     @Override
     @Transactional(readOnly = true)
     public StudentTrendResponse getStudentTrend(Integer studentId, Integer subjectId) {
-        log.debug("Building score trend for student ID={}, subjectId={}", studentId, subjectId);
 
-        Student    student = studentService.findStudentOrThrow(studentId);
-        List<Mark> marks   = markRepository.findStudentTrend(studentId, subjectId);
+        log.debug("Building trend for student {}", studentId);
 
-        List<StudentTrendResponse.TrendEntry> trendEntries = marks.stream()
+        Student student = studentService.findStudentOrThrow(studentId);
+        List<Mark> marks = markRepository.findStudentTrend(studentId, subjectId);
+
+        List<StudentTrendResponse.TrendEntry> trend = marks.stream()
                 .map(m -> new StudentTrendResponse.TrendEntry(
                         m.getExam().getExamId(),
                         m.getExam().getExamName(),
                         m.getExam().getExamDate().toString(),
-                        m.getScore()))
+                        m.getScore()
+                ))
                 .collect(Collectors.toList());
 
-        String trendDirection = "Stable";
-        double changePercent  = 0.0;
+        String direction = "Stable";
+        double percent = 0.0;
 
-        if (trendEntries.size() >= 2) {
-            int firstScore = trendEntries.get(0).getScore();
-            int lastScore  = trendEntries.get(trendEntries.size() - 1).getScore();
-            if (firstScore > 0) {
-                changePercent = round2(((lastScore - firstScore) * 100.0) / firstScore);
+        if (trend.size() >= 2) {
+            int first = trend.get(0).getScore();
+            int last = trend.get(trend.size() - 1).getScore();
+
+            if (first > 0) {
+                percent = round2(((last - first) * 100.0) / first);
             }
-            if      (lastScore > firstScore) trendDirection = "Improving";
-            else if (lastScore < firstScore) trendDirection = "Declining";
+
+            if (last > first) direction = "Improving";
+            else if (last < first) direction = "Declining";
         }
 
-        // Null when not scoped to a specific subject — @JsonInclude(NON_NULL) suppresses the field
         StudentTrendResponse.SubjectRef subjectRef = null;
+
         if (subjectId != null && !marks.isEmpty()) {
             subjectRef = new StudentTrendResponse.SubjectRef(
                     marks.get(0).getSubject().getSubjectId(),
@@ -148,30 +171,30 @@ public class ReportServiceImpl implements ReportService {
         return new StudentTrendResponse(
                 new StudentTrendResponse.StudentRef(
                         student.getStudentId(),
-                        student.getFirstName() + " " + student.getLastName()),
+                        student.getFirstName() + " " + student.getLastName()
+                ),
                 subjectRef,
-                trendEntries,
-                trendDirection,
-                changePercent
+                trend,
+                direction,
+                percent
         );
     }
 
-    // ------------------------------------------------------------------
-    // Private helpers
-    // ------------------------------------------------------------------
+    // ================= Helper Methods =================
 
     private StudentCompareResponse.StudentDetail buildStudentDetail(Student student, Integer examId) {
-        List<Object[]> rows = markRepository.findSubjectAveragesForStudent(
-                student.getStudentId(), examId);
 
-        List<StudentCompareResponse.SubjectAverage> subjectAverages = rows.stream()
+        List<Object[]> rows = markRepository.findSubjectAveragesForStudent(student.getStudentId(), examId);
+
+        List<StudentCompareResponse.SubjectAverage> averages = rows.stream()
                 .map(row -> new StudentCompareResponse.SubjectAverage(
                         (String) row[0],
-                        round2(((Number) row[1]).doubleValue())))
+                        round2(((Number) row[1]).doubleValue())
+                ))
                 .collect(Collectors.toList());
 
-        double overallAverage = subjectAverages.isEmpty() ? 0.0 :
-                round2(subjectAverages.stream()
+        double overall = averages.isEmpty() ? 0.0 :
+                round2(averages.stream()
                         .mapToDouble(StudentCompareResponse.SubjectAverage::getAverage)
                         .average()
                         .orElse(0.0));
@@ -179,24 +202,28 @@ public class ReportServiceImpl implements ReportService {
         return new StudentCompareResponse.StudentDetail(
                 new StudentCompareResponse.StudentRef(
                         student.getStudentId(),
-                        student.getFirstName() + " " + student.getLastName()),
-                overallAverage,
-                subjectAverages
+                        student.getFirstName() + " " + student.getLastName()
+                ),
+                overall,
+                averages
         );
     }
 
-    private StudentCompareResponse.Winner determineWinner(Student studentA, Student studentB,
+    private StudentCompareResponse.Winner determineWinner(Student a, Student b,
                                                           double avgA, double avgB) {
+
         if (avgA >= avgB) {
             return new StudentCompareResponse.Winner(
-                    studentA.getStudentId(),
-                    studentA.getFirstName() + " " + studentA.getLastName(),
-                    round2(avgA - avgB));
+                    a.getStudentId(),
+                    a.getFirstName() + " " + a.getLastName(),
+                    round2(avgA - avgB)
+            );
         } else {
             return new StudentCompareResponse.Winner(
-                    studentB.getStudentId(),
-                    studentB.getFirstName() + " " + studentB.getLastName(),
-                    round2(avgB - avgA));
+                    b.getStudentId(),
+                    b.getFirstName() + " " + b.getLastName(),
+                    round2(avgB - avgA)
+            );
         }
     }
 
